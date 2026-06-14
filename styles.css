@@ -1,0 +1,375 @@
+/* ── The Indian Poncho Co. — brand tokens ─────────────────────────── */
+:root {
+  --terracotta: #c94f2c;
+  --terracotta-dark: #a93f20;
+  --turquoise: #2a8c82;
+  --obsidian: #1c1a17;
+  --bone: #f5edd9;
+  --mustard: #d4a017;
+  --bark: #7a4f2d;
+  --sage: #6b7b5e;
+  --sand: #e8d5b0;
+  --white: #fdfaf5;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --radius: 14px;
+  --shadow: 0 2px 14px rgba(28, 26, 23, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bone);
+  color: var(--obsidian);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* ── Header / footer ──────────────────────────────────────────────── */
+.site-header {
+  padding: 20px 24px 12px;
+  text-align: center;
+}
+
+.wordmark-main {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+
+.wordmark-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  color: var(--bark);
+  margin-top: 4px;
+}
+
+.site-footer {
+  padding: 18px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: var(--bark);
+}
+
+/* ── Progress bar ─────────────────────────────────────────────────── */
+.progress-track {
+  height: 5px;
+  background: var(--sand);
+  margin: 6px 24px 0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--terracotta);
+  border-radius: 3px;
+  transition: width 0.35s ease;
+}
+
+/* ── Screen container ─────────────────────────────────────────────── */
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.card {
+  animation: rise 0.35s ease both;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Typography ───────────────────────────────────────────────────── */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--turquoise);
+  margin-bottom: 14px;
+}
+
+h1.question-title,
+h1.hero-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.65rem;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+h1.hero-title {
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.question-hint {
+  font-size: 0.92rem;
+  color: var(--bark);
+  margin-bottom: 22px;
+}
+
+.hero-sub {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--obsidian);
+  opacity: 0.85;
+  margin: 14px 0 28px;
+}
+
+/* ── Options ──────────────────────────────────────────────────────── */
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.options.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.option-btn {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-align: left;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 2px solid var(--sand);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, transform 0.1s ease;
+  color: var(--obsidian);
+  line-height: 1.35;
+}
+
+.option-btn:hover {
+  border-color: var(--terracotta);
+}
+
+.option-btn:active {
+  transform: scale(0.985);
+}
+
+.option-btn.selected {
+  border-color: var(--terracotta);
+  background: var(--terracotta);
+  color: var(--white);
+}
+
+.option-btn.selected .option-key {
+  color: var(--white);
+  border-color: rgba(253, 250, 245, 0.5);
+}
+
+.option-key {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  border: 1px solid var(--sand);
+  border-radius: 5px;
+  padding: 1px 6px;
+  margin-right: 10px;
+  color: var(--bark);
+  vertical-align: 1px;
+}
+
+/* ── Inputs ───────────────────────────────────────────────────────── */
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 14px 16px;
+  border: 2px solid var(--sand);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--obsidian);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+textarea:focus,
+input:focus {
+  border-color: var(--turquoise);
+}
+
+textarea {
+  min-height: 130px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.field-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bark);
+  margin: 18px 0 8px;
+}
+
+.field-error {
+  color: var(--terracotta-dark);
+  font-size: 0.85rem;
+  margin-top: 6px;
+  min-height: 1.2em;
+}
+
+.other-input-wrap {
+  margin-top: 10px;
+}
+
+/* ── Buttons / nav ────────────────────────────────────────────────── */
+.btn-primary {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  background: var(--terracotta);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius);
+  padding: 15px 34px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.btn-primary:hover {
+  background: var(--terracotta-dark);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: var(--sand);
+  color: var(--bark);
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+  color: var(--bark);
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.btn-ghost:hover {
+  color: var(--obsidian);
+  background: var(--sand);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 26px;
+  gap: 12px;
+}
+
+.step-counter {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--bark);
+}
+
+/* ── Thank-you / hero flourishes ──────────────────────────────────── */
+.hero-mark {
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+}
+
+.meta-line {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--sage);
+  margin-top: 26px;
+}
+
+.privacy-note {
+  font-size: 0.8rem;
+  color: var(--bark);
+  margin-top: 14px;
+  line-height: 1.5;
+}
+
+/* Honeypot — invisible to humans, tempting to bots */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* ── Mobile ───────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  h1.hero-title {
+    font-size: 1.7rem;
+  }
+
+  h1.question-title {
+    font-size: 1.35rem;
+  }
+
+  .options.grid {
+    grid-template-columns: 1fr;
+  }
+
+  .screen {
+    padding: 18px;
+    justify-content: flex-start;
+    padding-top: 28px;
+  }
+
+  .option-key {
+    display: none;
+  }
+}
