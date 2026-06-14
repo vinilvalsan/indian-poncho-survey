@@ -109,14 +109,21 @@ function renderQuestion(question, index) {
   const nav = el("div", "nav-row");
   const backBtn = el("button", "btn-ghost", "← Back");
   backBtn.addEventListener("click", () => goToStep(index - 1));
-  nav.append(backBtn);
-  nav.append(
-    el(
-      "span",
-      "step-counter",
-      String(index + 1).padStart(2, "0") + " / " + totalSteps()
-    )
+
+  const counter = el(
+    "span",
+    "step-counter",
+    String(index + 1).padStart(2, "0") + " / " + totalSteps()
   );
+
+  const skipBtn = el("button", "btn-ghost", "Skip →");
+  skipBtn.addEventListener("click", () => {
+    delete surveyState.answers[question.id];
+    delete surveyState.answers[question.id + "_other"];
+    goToStep(index + 1);
+  });
+
+  nav.append(backBtn, counter, skipBtn);
   card.append(nav);
   setScreen(card);
 }
@@ -211,7 +218,7 @@ function showOtherInput(card, question, index) {
 }
 
 function toggleMultiOption(btn, option, selected, question, card) {
-  const max = question.exactSelect || question.maxSelect;
+  const max = question.maxSelect;
   if (selected.has(option)) {
     selected.delete(option);
     btn.classList.remove("selected");
@@ -228,13 +235,9 @@ function toggleMultiOption(btn, option, selected, question, card) {
   if (error) error.textContent = "";
 }
 
-function validateMulti(question, picks) {
-  if (question.exactSelect && picks.length !== question.exactSelect) {
-    return "Pick exactly " + question.exactSelect + " — that's the hard part.";
-  }
-  if (question.minSelect && picks.length < question.minSelect) {
-    return "Pick at least " + question.minSelect + ".";
-  }
+function validateMulti() {
+  // Every question is skippable — no lower-bound gate. The per-option cap
+  // (maxSelect) is enforced live in toggleMultiOption, so nothing to block here.
   return "";
 }
 

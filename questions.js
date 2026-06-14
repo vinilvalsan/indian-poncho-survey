@@ -57,10 +57,9 @@ const SURVEY_QUESTIONS = [
     id: "gear_owned",
     section: "What you do today",
     type: "multi",
-    required: true,
-    minSelect: 1,
+    required: false,
     title: "What rain gear do you own right now?",
-    hint: "Tick everything that applies.",
+    hint: "Tick everything that applies — or skip.",
     options: [
       "Umbrella",
       "Plastic poncho / cheap raincoat (under ₹500)",
@@ -186,11 +185,11 @@ const SURVEY_QUESTIONS = [
     id: "top_two",
     section: "What would win you over",
     type: "multi",
-    required: true,
-    exactSelect: 2,
+    required: false,
+    maxSelect: 2,
     title:
       "If a genuinely better rain jacket existed, which TWO things would matter most to you?",
-    hint: "Pick exactly two. Choosing is the whole point.",
+    hint: "Pick up to 2 — choosing is the useful part. Or skip.",
     options: [
       "Completely dry in a proper downpour",
       "Doesn't turn into a sauna in Indian heat",
