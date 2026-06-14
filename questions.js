@@ -116,10 +116,10 @@ const SURVEY_QUESTIONS = [
     id: "rain_story",
     section: "What you do today",
     type: "textarea",
-    required: true,
+    required: false,
     title:
       "Think of the last time heavy rain caught you when you HAD to be somewhere. What did you do, and what annoyed you most?",
-    hint: "Two or three honest lines. This is the most useful answer in the whole survey.",
+    hint: "Optional — but two or three honest lines here is the most useful answer in the whole survey.",
     placeholder: "It was pouring and I had to reach…",
   },
   {
